@@ -136,4 +136,63 @@
         }
         ```
 
-Feel free to ask for further clarification on any question or topic!
+
+1. **Angular Basics:**
+   - **Q: What is Angular, and how does it differ from AngularJS?**
+     - A: Angular is a platform and framework for building client-side applications with TypeScript. It's a complete rewrite of AngularJS and is often referred to as Angular 2+.
+
+   - **Q: Explain the concept of two-way data binding in Angular.**
+     - A: Two-way data binding in Angular allows automatic synchronization between the model and the view. Changes in the model update the view, and vice versa.
+
+2. **Components and Directives:**
+   - **Q: What is the role of components in Angular?**
+     - A: Components are the building blocks of Angular applications. They encapsulate the template, logic, and styles for a part of the UI.
+
+   - **Q: Differentiate between structural directives and attribute directives in Angular.**
+     - A: Structural directives alter the structure of the DOM, like *ngIf and *ngFor. Attribute directives modify the appearance or behavior of an element, like [ngClass] or [ngStyle].
+
+3. **Services and Dependency Injection:**
+   - **Q: Why are services used in Angular, and how is dependency injection beneficial?**
+     - A: Services provide a way to share functionality across components. Dependency injection helps manage the creation and injection of service instances, promoting modularity and testability.
+
+   - **Q: Explain the singleton pattern in Angular services.**
+     - A: By default, Angular services are singletons, meaning there is only one instance per application. They are shared across components, ensuring a consistent state.
+
+4. **Angular Modules:**
+   - **Q: What is an Angular module, and why is it used?**
+     - A: An Angular module is a mechanism for organizing and structuring an application. It encapsulates components, services, and other features, providing modularity and maintainability.
+
+   - **Q: Describe the difference between `declarations`, `imports`, and `providers` in an Angular module.**
+     - A: 
+       - `declarations`: List of components, directives, and pipes in the module.
+       - `imports`: Modules that the current module depends on.
+       - `providers`: Services that the module contributes to the global collection of services.
+
+5. **Routing in Angular:**
+   - **Q: How does routing work in Angular, and what is the purpose of the Angular Router module?**
+     - A: Angular Router enables navigation between different components, managing the application state and providing a way to handle browser history.
+
+   - **Q: How do you implement lazy loading in Angular, and why is it beneficial?**
+     - A: Lazy loading allows loading modules on-demand, reducing the initial bundle size and improving application load time. It's achieved by configuring routes with the loadChildren property.
+
+6. **Forms in Angular:**
+   - **Q: Explain the difference between template-driven forms and reactive forms in Angular.**
+     - A: Template-driven forms are based on Angular templates, while reactive forms use an explicit form model in the component.
+
+   - **Q: How do you handle form validation in Angular?**
+     - A: Angular provides both template-driven and reactive form validation. You can use built-in validators or create custom validators to ensure data integrity.
+
+7. **Observables and HTTP:**
+   - **Q: What are Observables in Angular, and how do they relate to asynchronous programming?**
+     - A: Observables represent a stream of data over time. They are used for handling asynchronous operations in Angular, such as HTTP requests.
+
+   - **Q: Discuss error handling strategies when making HTTP requests in Angular.**
+     - A: Error handling in Angular involves using operators like catchError to handle errors returned by HTTP requests. This ensures a graceful response to network or server issues.
+
+8. **Testing in Angular:**
+   - **Q: Why is testing important in Angular, and how can you perform unit testing for components?**
+     - A: Testing ensures the reliability and maintainability of Angular applications. Unit testing for components involves testing the component's behavior and interactions in isolation.
+
+   - **Q: Explain the concept of TestBed in Angular testing.**
+     - A: TestBed is an Angular testing utility that creates a dynamically configured Angular test module. It provides a clean testing environment for isolating and testing components.
+
