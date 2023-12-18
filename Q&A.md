@@ -90,7 +90,6 @@
             ListNode next;
             ListNode(int val) { this.val = val; }
         }
-
         public class ReverseLinkedList {
             public ListNode reverseList(ListNode head) {
                 ListNode prev = null;
@@ -116,9 +115,7 @@
 
         public class CommonElements {
             public static void main(String[] args) {
-                int[]
-
- array1 = {1, 2, 3, 4, 5};
+                int[] array1 = {1, 2, 3, 4, 5};
                 int[] array2 = {3, 4, 5, 6, 7};
 
                 HashSet<Integer> set = new HashSet<>();
