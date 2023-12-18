@@ -193,3 +193,112 @@
    - **Q: Explain the concept of TestBed in Angular testing.**
      - A: TestBed is an Angular testing utility that creates a dynamically configured Angular test module. It provides a clean testing environment for isolating and testing components.
 
+
+
+
+# Understanding Spring’s Stereotype Annotations
+
+Spring Framework, a powerful and widely used framework for Java development, simplifies the process of building enterprise-level applications. One of its key features is the use of stereotype annotations, which provide a way to define and organize components within the Spring container. In this blog post, we'll explore these stereotype annotations and delve into interview questions related to their usage.
+
+## Stereotype Annotations in Spring:
+
+Stereotype annotations in Spring are meta-annotations that help categorize and define the roles of various components in the application. They enhance readability, promote best practices, and simplify configuration. Here are some of the primary stereotype annotations:
+
+### 1. **@Component:**
+   - **Purpose:** Marks a Java class as a Spring component, allowing it to be automatically detected and registered as a bean in the Spring container.
+   - **Example:**
+     ```java
+     @Component
+     public class MyComponent {
+         // Class definition
+     }
+     ```
+
+### 2. **@Service:**
+   - **Purpose:** Indicates that a class is a service, typically used for business logic. It is a specialized form of `@Component`.
+   - **Example:**
+     ```java
+     @Service
+     public class MyService {
+         // Service implementation
+     }
+     ```
+
+### 3. **@Repository:**
+   - **Purpose:** Denotes a class as a Data Access Object (DAO) or repository. It is used to manage database operations.
+   - **Example:**
+     ```java
+     @Repository
+     public class MyRepository {
+         // Repository implementation
+     }
+     ```
+
+### 4. **@Controller:**
+   - **Purpose:** Marks a class as a Spring MVC controller, responsible for handling web requests. It is often used in combination with `@RequestMapping`.
+   - **Example:**
+     ```java
+     @Controller
+     public class MyController {
+         // Controller methods
+     }
+     ```
+
+### 5. **@Configuration:**
+   - **Purpose:** Specifies that a class is a configuration class, defining one or more beans. It is used in conjunction with `@Bean` annotations.
+   - **Example:**
+     ```java
+     @Configuration
+     public class AppConfig {
+         // Configuration and bean definitions
+     }
+     ```
+
+### Interview Questions:
+
+Now that we have a foundational understanding of stereotype annotations, let's explore some interview questions that may be asked to assess your knowledge and practical experience:
+
+#### Q1: What is the purpose of stereotype annotations in Spring?
+
+**A:** Stereotype annotations in Spring serve the purpose of categorizing and defining the roles of various components. They simplify configuration, enhance readability, and facilitate automatic detection of beans by the Spring container.
+
+#### Q2: Explain the difference between `@Component`, `@Service`, and `@Repository`.
+
+**A:** 
+   - `@Component` is a generic stereotype annotation indicating a Spring component.
+   - `@Service` is a specialization of `@Component` used for marking service classes.
+   - `@Repository` is another specialization of `@Component` specifically used for DAO or repository classes.
+
+#### Q3: How does Spring handle the beans marked with stereotype annotations during component scanning?
+
+**A:** Spring uses component scanning to automatically detect classes annotated with stereotypes. When the application context is initialized, Spring scans the specified base packages, identifies classes with stereotype annotations, and registers them as beans in the Spring container.
+
+#### Q4: Can a class be annotated with multiple stereotype annotations?
+
+**A:** Yes, a class can be annotated with multiple stereotype annotations. For example, a class can be both a `@Component` and a `@Service` if it serves the roles defined by both annotations.
+
+#### Q5: When would you use `@Controller` in a Spring application?
+
+**A:** `@Controller` is used to mark a class as a Spring MVC controller. It is responsible for handling web requests and returning appropriate responses. Typically, it is used in combination with `@RequestMapping` to define request mappings.
+
+#### Q6: Explain the role of `@Configuration` in Spring.
+
+**A:** `@Configuration` is used to define a class as a configuration class in Spring. It is often used in conjunction with `@Bean` annotations to define and register beans manually. Configuration classes play a key role in Java-based configuration in Spring applications.
+
+#### Q7: How does Spring manage the lifecycle of beans created from classes annotated with stereotype annotations?
+
+**A:** Spring manages the lifecycle of beans created from classes annotated with stereotype annotations through its container. During initialization, the container detects and registers beans, and it invokes appropriate lifecycle methods such as `@PostConstruct` for initialization and `@PreDestroy` for cleanup.
+
+#### Q8: What is the difference between stereotype annotations and custom annotations in Spring?
+
+**A:** Stereotype annotations (e.g., `@Component`, `@Service`) are built-in annotations provided by Spring to define common roles for components. Custom annotations, on the other hand, are user-defined annotations created for specific application requirements.
+
+#### Q9: How can you enable component scanning in a Spring application?
+
+**A:** Component scanning is enabled by using the `@ComponentScan` annotation on a configuration class. This annotation specifies the base packages to scan for components.
+
+#### Q10: Can you create a custom stereotype annotation in Spring?
+
+**A:** Yes, it is possible to create a custom stereotype annotation by creating a new annotation and meta-annotating it with `@Component`. This custom annotation can then be used to mark classes for specific roles in the application.
+
+In conclusion, Spring's stereotype annotations play a crucial role in organizing and managing components within a Spring application. Understanding how to use these annotations effectively is fundamental for building scalable and maintainable applications. As you prepare for your Spring-related interviews, be sure to delve into practical examples and explore real-world scenarios where these annotations prove valuable. Good luck!
