@@ -1,4 +1,3 @@
-Certainly! Here are additional questions along with their answers:
 
 1. **Microservices Architecture:**
    - **Q: What is the role of a service registry in microservices architecture?**
