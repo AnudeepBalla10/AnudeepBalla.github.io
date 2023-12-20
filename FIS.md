@@ -82,22 +82,22 @@
 8. **What happens if a thread accesses a locked resource?**
    - If a thread attempts to access a locked resource, its behavior depends on the synchronization mechanism in use. Here are potential outcomes:
 
-1. **Blocking:**
-   - The thread may enter a blocking state if the resource is locked. It will wait until the lock becomes available before proceeding.
+   1. **Blocking:**
+      - The thread may enter a blocking state if the resource is locked. It will wait until the lock becomes available before proceeding.
 
-2. **Deadlock:**
-   - If multiple threads are involved, there's a risk of deadlock. This occurs when each thread is waiting for the other to release a lock, resulting in a standstill.
+   2. **Deadlock:**
+      - If multiple threads are involved, there's a risk of deadlock. This occurs when each thread is waiting for the other to release a lock, resulting in a standstill.
 
-3. **Exception or Error:**
-   - Some synchronization mechanisms may throw an exception or return an error if a thread tries to access a locked resource without the necessary permissions.
+   3. **Exception or Error:**
+      - Some synchronization mechanisms may throw an exception or return an error if a thread tries to access a locked resource without the necessary permissions.
 
-4. **Priority Inversion:**
-   - In certain scenarios, a lower-priority thread holding a lock needed by a higher-priority thread can occur, causing priority inversion.
+   4. **Priority Inversion:**
+      - In certain scenarios, a lower-priority thread holding a lock needed by a higher-priority thread can occur, causing priority inversion.
 
-5. **Contention:**
-   - Multiple threads contending for a lock might experience contention. The system may use strategies like priority scheduling to determine which thread gets access next.
+   5. **Contention:**
+      - Multiple threads contending for a lock might experience contention. The system may use strategies like priority scheduling to determine which thread gets access next.
 
-Proper synchronization using locks, semaphores, or other mechanisms is vital to prevent race conditions and ensure predictable behavior. It's essential to choose the right synchronization strategy based on the application's specific requirements and potential risks.
+      Proper synchronization using locks, semaphores, or other mechanisms is vital to prevent race conditions and ensure predictable behavior. It's essential to choose the right synchronization strategy based on the application's specific requirements and potential risks.
 
 9. **Write a program to print alternate tables using two threads.**
 
@@ -195,13 +195,14 @@ While the composite index (empId, DeptId) can still be used to filter based on d
 | **Standardization**      | Strong standards compliance, suitable for projects with regulatory requirements | Offers flexibility, allowing teams to choose appropriate standards based on project needs |
 
 When developing microservices, REST is often preferred for its simplicity, lightweight communication, and flexibility, making it well-suited for independent and loosely-coupled microservices. SOAP might be chosen in situations where strict standards compliance or complex operations are essential, such as in enterprise-level systems with legacy components. The decision often depends on the specific requirements and constraints of the microservices architecture being developed.
-18.. What are Idempotent methods? How is it relevant in RESTful web services domain?
-- The meaning of idempotent is that even after calling a single request multiple times, the outcome of the request should be the same. While designing REST APIs, we need to keep in mind to develop idempotent APIs. This is because the consumers can write client-side code which can result in duplicate requests intentionally or not. Hence, fault-tolerant APIs need to be designed so that they do not result in erroneous responses.
-- Idempotent methods ensure that the responses to a request if called once or ten times or more than that remain the same. This is equivalent to adding any number with 0.
+
+18. What are Idempotent methods? How is it relevant in RESTful web services domain?
+      - The meaning of idempotent is that even after calling a single request multiple times, the outcome of the request should be the same. While designing REST APIs, we need to keep in mind to develop idempotent APIs. This is because the consumers can write client-side code which can result in duplicate requests intentionally or not. Hence, fault-tolerant APIs need to be designed so that they do not result in erroneous responses.
+      - Idempotent methods ensure that the responses to a request if called once or ten times or more than that remain the same. This is equivalent to adding any number with 0.
 REST provides idempotent methods automatically. GET, PUT, DELETE, HEAD, OPTIONS, and TRACE are the idempotent HTTP methods. POST is not idempotent.
-- POST is not idempotent because POST APIs are usually used for creating a new resource on the server. While calling POST methods N times, there will be N new resources. This does not result in the same outcome at a time.
+      - POST is not idempotent because POST APIs are usually used for creating a new resource on the server. While calling POST methods N times, there will be N new resources. This does not result in the same outcome at a time.
 Methods like GET, OPTIONS, TRACE, and HEAD are idempotent because they do not change the state of resources on the server. They are meant for resource retrieval whenever called. They do not result in write operations on the server thereby making it idempotent.
 PUT methods are generally used for updating the state of resources. If you call PUT methods N times, the first request updates the resource and the subsequent requests will be overwriting the same resource again and again without changing anything. Hence, PUT methods are idempotent.
-- DELETE methods are said to be idempotent because when calling them for N times, the first request results in successful deletion (Status Code 200), and the next subsequent requests result in nothing - Status Code 204. The response is different, but there is no change of resources on the server-side.
-- However, if you are attempting to delete the resource present, at last, every time you hit the API, such as the request DELETE /user/last which deletes the last user record, then calling the request N times would delete N resources on the server. This does not make DELETE idempotent. In such cases, as part of good practices, it is advisable to use POST requests.
+      - DELETE methods are said to be idempotent because when calling them for N times, the first request results in successful deletion (Status Code 200), and the next subsequent requests result in nothing - Status Code 204. The response is different, but there is no change of resources on the server-side.
+      - However, if you are attempting to delete the resource present, at last, every time you hit the API, such as the request DELETE /user/last which deletes the last user record, then calling the request N times would delete N resources on the server. This does not make DELETE idempotent. In such cases, as part of good practices, it is advisable to use POST requests.
     
