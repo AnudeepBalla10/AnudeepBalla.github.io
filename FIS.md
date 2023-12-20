@@ -5,32 +5,32 @@
 3. **What challenges have you seen in a distributed environment?**
    - Challenges include network latency, data consistency, fault tolerance, security, and monitoring.
 
-4. **What is the purpose of an API Gateway in microservices?**
-The purpose of an API Gateway in microservices is to act as a central entry point for managing and facilitating communication between clients and multiple microservices. Key purposes include:
+5. **What is the purpose of an API Gateway in microservices?**
+   - The purpose of an API Gateway in microservices is to act as a central entry point for managing and facilitating communication between clients and multiple microservices. Key purposes include:
 
-1. **Aggregation:** Aggregate data from multiple microservices into a single response for clients.
+   1. **Aggregation:** Aggregate data from multiple microservices into a single response for clients.
 
-2. **Request Routing:** Route incoming requests from clients to the appropriate microservices based on API endpoints.
+   2. **Request Routing:** Route incoming requests from clients to the appropriate microservices based on API endpoints.
 
-3. **Load Balancing:** Distribute incoming traffic evenly across multiple instances of microservices to ensure optimal performance.
+   3. **Load Balancing:** Distribute incoming traffic evenly across multiple instances of microservices to ensure optimal performance.
 
-4. **Authentication and Authorization:** Handle authentication and authorization for incoming requests, ensuring secure access to microservices.
+   4. **Authentication and Authorization:** Handle authentication and authorization for incoming requests, ensuring secure access to microservices.
 
-5. **Rate Limiting:** Enforce rate limits on incoming requests to prevent abuse and ensure fair resource usage.
+   5. **Rate Limiting:** Enforce rate limits on incoming requests to prevent abuse and ensure fair resource usage.
 
-6. **Logging and Monitoring:** Centralize logging and monitoring of microservices interactions for easier management and troubleshooting.
+   6. **Logging and Monitoring:** Centralize logging and monitoring of microservices interactions for easier management and troubleshooting.
 
-7. **Security:** Implement security measures such as encryption and protection against common web attacks.
+   7. **Security:** Implement security measures such as encryption and protection against common web attacks.
 
-8. **Versioning:** Manage API versioning to support backward compatibility and smooth transitions.
+   8. **Versioning:** Manage API versioning to support backward compatibility and smooth transitions.
 
-9. **Error Handling:** Provide a standardized approach for handling errors and returning meaningful responses to clients.
+   9. **Error Handling:** Provide a standardized approach for handling errors and returning meaningful responses to clients.
 
-10. **Simplify Client Interaction:** Abstract the complexity of microservices architecture, providing clients with a simplified interface and reducing the number of direct calls to individual services.
+   10. **Simplify Client Interaction:** Abstract the complexity of microservices architecture, providing clients with a simplified interface and reducing the number of direct calls to individual services.
 
-In essence, an API Gateway serves as a comprehensive and efficient entry point, addressing various concerns related to communication, security, and management in a microservices environment.
+   In essence, an API Gateway serves as a comprehensive and efficient entry point, addressing various concerns related to communication, security, and management in a microservices environment.
 
-5. **What is containerization, and how does it relate to CI/CD?**
+7. **What is containerization, and how does it relate to CI/CD?**
    - Certainly, let's keep it more formal.
 
 Containerization is a technology that encapsulates an application and its dependencies into a container, ensuring consistency and portability across various environments. Containers package the necessary components, such as code, runtime, libraries, and settings, into a self-contained unit.
