@@ -205,4 +205,20 @@ Methods like GET, OPTIONS, TRACE, and HEAD are idempotent because they do not ch
 PUT methods are generally used for updating the state of resources. If you call PUT methods N times, the first request updates the resource and the subsequent requests will be overwriting the same resource again and again without changing anything. Hence, PUT methods are idempotent.
       - DELETE methods are said to be idempotent because when calling them for N times, the first request results in successful deletion (Status Code 200), and the next subsequent requests result in nothing - Status Code 204. The response is different, but there is no change of resources on the server-side.
       - However, if you are attempting to delete the resource present, at last, every time you hit the API, such as the request DELETE /user/last which deletes the last user record, then calling the request N times would delete N resources on the server. This does not make DELETE idempotent. In such cases, as part of good practices, it is advisable to use POST requests.
-    
+
+
+
+ ***Here's a table summarizing the differences between static and dynamic libraries in Java:***
+
+| Feature                  | Static Library                                       | Dynamic Library                                      |
+|--------------------------|------------------------------------------------------|-------------------------------------------------------|
+| **Linking Time**         | Linked at compile-time                               | Linked at runtime                                     |
+| **File Format**          | JAR file (Java Archive)                              | JAR file or separate class files                      |
+| **Loading Mechanism**    | Included in the classpath during compilation         | Dynamically loaded using ClassLoaders at runtime      |
+| **Deployment**           | Requires distribution and inclusion at compile-time  | Can be added, replaced, or removed without recompiling |
+| **Performance**          | Generally faster due to compile-time linking         | May have a slight overhead due to dynamic loading      |
+| **Flexibility**          | Limited flexibility, changes require recompilation   | More flexible, changes can be applied at runtime       |
+| **Memory Usage**         | All classes are included in the executable           | Classes are loaded dynamically, potentially reducing memory usage |
+| **Error Detection**      | Compile-time errors are detected                      | Runtime errors may occur if classes are not found or loaded properly |
+
+This table provides a concise overview of the key differences between static and dynamic libraries in Java.
