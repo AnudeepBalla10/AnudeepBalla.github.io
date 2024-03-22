@@ -1,0 +1,172 @@
+:host {
+  display: block;
+  padding: 4rem 2rem 6rem;
+  background-color: var(--dark-gray);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 100%, 0% 95%);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+/* Apply the animation to the title element */
+.title {
+  font-size: rem;
+  padding: 10rem 0 2rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--green);
+  font-family: "Comic Sans MS", cursive;
+  position: relative;
+  display: inline-block;
+}
+
+.title:hover {
+  transform: scale(1.05);
+}
+
+.name {
+  grid-row: 3/4;
+  padding: 2rem;
+  color: white;
+  font-size: 2rem;
+  margin-top: 3rem;
+  outline: 1px solid white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.name span:nth-of-type(1) span {
+  font-size: 3rem;
+  color: var(--green);
+}
+
+.name span:nth-of-type(2) {
+  display: inline-block;
+  color: var(--green);
+  font-size: 4rem;
+  font-weight: bold;
+  padding: 10px 0;
+  letter-spacing: 8px;
+  text-shadow: 10px 10px 10px var(--black);
+}
+
+.profile {
+  width: 220px;
+  height: 300px;
+  grid-row: 2/3;
+  grid-column: 1/3;
+  margin: 0 auto;
+  position: relative;
+  clip-path: inset(0 round 0 0 15%);
+}
+
+.profile::before,
+.profile::after {
+  content: "";
+  position: relative;
+  top: 0;
+  left: 10%;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border: 6px solid #69f0ae; /* Replace with the color you want */
+  pointer-events: none; /* Ensures click events pass through */
+}
+
+/* Outer square border */
+.profile::before {
+  content: "";
+  position: relative;
+  border: 10px solid #69f0ae; /* Replace with the color you want */
+  pointer-events: none; /* Ensures click events pass through */
+  top: -20px; /* Adjust as needed */
+  left: -40px; /* Adjust as needed */
+  right: -20px; /* Adjust as needed */
+  bottom: -10px; /* Adjust as needed */
+}
+
+/* Inner square border */
+.profile::after {
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: 2;
+}
+
+.profile img {
+  width: 100%;
+  height: 100;
+  bottom: 10%;
+  position: relative;
+  display: block;
+  border-radius: 15%; /* Adjust as needed */
+  z-index: -5;
+}
+
+.profile .profile-bg {
+  height: 15%;
+  width: 90%;
+  bottom: 10%;
+  position: center;
+  background-color: #69f0ae;
+  clip-path: inset(0 round 50% 50% 0);
+}
+
+.profile img {
+  width: 90%;
+  height: 95%;
+  bottom: 10%;
+  position: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.4s ease; /* Add transition for smooth effect */
+}
+
+.profile img:hover {
+  transform: scale(1.05); /* Slightly increase the size */
+  box-shadow: 0 55px 55px var(--green); /* Add a shadow with a color that matches your theme */
+}
+
+/* PC */
+
+:host.pc {
+  padding: 4rem 2rem 10rem;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+}
+
+:host.pc .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  justify-items: center; /* Center grid items horizontally */
+  align-items: center; /* Center grid items vertically if needed */
+}
+
+:host.pc .title {
+  grid-column: 1/-1; /* Span full width of the grid */
+  text-align: center;
+  padding: 10%;
+  margin: auto;
+  font-size: 2rem;
+  font-style: italic;
+  font-family: "Comic Sans MS", cursive;
+}
+:host.pc.title:hover {
+  color: seagreen;
+}
+
+:host.pc .profile {
+  grid-column: auto;
+  top: -10%;
+  width: 70%;
+  height: 85%;
+}
+
+:host.pc .name {
+  grid-row: 2/3;
+  top: -20%;
+  width: 600px;
+  margin: auto;
+  height: auto;
+}
