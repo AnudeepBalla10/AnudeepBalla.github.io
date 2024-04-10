@@ -1,0 +1,85 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 1500px 100%;
+  background: hwb(164 0% 82%) 25%;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: hwb(164 0% 82%) 25%;
+  overflow: hidden; /* Hide overflow content during animation */
+}
+
+#wrapper.animate {
+  animation: suckAnimation 2s forwards;
+  background: hwb(164 0% 82%) 25%;
+}
+
+@keyframes suckAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.01);
+  }
+}
+
+.toggle-button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 60px;
+  height: 30px;
+  background-color: #212121;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 2px solid #69f0ae; /* Optional: Add a black border */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.toggle-button:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  top: 1px; /* Center the circle vertically */
+  left: 2px;
+  background-color: #fff; /* Black circle */
+  transition: 0.3s;
+}
+
+.toggle-button:checked:before {
+  transform: translateX(30px);
+  background-color: hsl(25, 92%, 57%); /* White circle when checked */
+}
+
+.toggle-button:checked {
+  background-color: #4caf50;
+}
+.star {
+  transform-style: preserve-3d;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  color: red;
+}
+
+.star:before {
+  position: absolute;
+  content: "\2726";
+  color: inherit;
+  inset: 0;
+  text-shadow: 0 0 0.8em #fff5;
+}

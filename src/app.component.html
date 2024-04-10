@@ -1,0 +1,15 @@
+<div id="wrapper" (mousemove)="onMouseMove($event)">
+    <input type="checkbox" class="toggle-button" (change)="toggleAnimation()" />
+  </div>
+  
+  <div class="profile-container" *ngIf="animationState === 'active'" [@fragmentAnimation]="animationState">
+    <baner responsive></baner>
+    <personal-information responsive></personal-information>
+    <div class="container">
+      <education responsive></education>
+      <work-experience responsive></work-experience>
+    </div>
+    <skills responsive></skills>
+    <contact responsive></contact>
+  </div>
+  
