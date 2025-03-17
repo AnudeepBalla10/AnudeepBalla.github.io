@@ -163,25 +163,7 @@
 </head>
 <body>
     <button class="dark-mode-toggle" id="dark-mode-toggle">Dark Mode</button>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#">Portfolio</a>
-        </div>
-        <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="#" id="about-nav">Java</a>
-                <a class="navbar-item" href="#" id="skills-nav">Python</a>
-                <a class="navbar-item" href="#" id="projects-nav">DynamoDB</a>
-                <a class="navbar-item" href="#" id="photography-nav">Node.js</a>
-                <a class="navbar-item" href="#" id="podcast-nav">TypeScript</a>
-                <a class="navbar-item" href="#" id="blog-nav">AWS</a>
-                <a class="navbar-item" href="#" id="contact-nav">PostgreSQL</a>
-                <a class="navbar-item" href="#" id="podcast-nav">MySQL</a>
-                <a class="navbar-item" href="#" id="blog-nav">Docket</a>
-                <a class="navbar-item" href="#" id="contact-nav">Kafka</a>
-            </div>
-        </div>
-    </nav>
+
     <div class="hero">
         <h1>Welcome to my portfolio!</h1>
         <button class="button is-primary" id="about-button">Learn More</button>
@@ -241,13 +223,19 @@
         const height = window.innerHeight;
         const nodes = [
             { id: 'center', x: width / 2, y: height / 2, vx: 0, vy: 0, fixed: true, name: 'ANUDEEP BALLA' },
-            { id: 'about', x: width / 2 + 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'skills', x: width / 2 + 200, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'projects', x: width / 2, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'photography', x: width / 2 - 200, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'podcast', x: width / 2 - 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'blog', x: width / 2 - 200, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
-            { id: 'contact', x: width / 2, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Java', x: width / 2 + 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Python', x: width / 2 + 200, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'DynamoDB', x: width / 2, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Node.js', x: width / 2 - 200, y: height / 2 + 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'TypeScript', x: width / 2 - 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'AWS', x: width / 2 - 200, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'PostgreSQL', x: width / 2, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'MySQL', x: width / 2 - 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Docket', x: width / 2 - 200, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Angular', x: width / 2, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'Spring Boot', x: width / 2 - 200, y: height / 2, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'HTML', x: width / 2 - 200, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
+            { id: 'JUnit', x: width / 2, y: height / 2 - 200, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1 },
             { id: 'cursor', x: 0, y: 0, vx: 0, vy: 0, fixed: true }
         ];
         let cursor = { x: 0, y: 0 };
@@ -689,12 +677,12 @@
         }
 
         function updateSkills() {
-            document.getElementById('navigation-value').innerText = navigationSkill;
-            document.getElementById('problem-solving-value').innerText = problemSolvingSkill;
-            document.getElementById('adventure-value').innerText = adventureSkill;
-            document.getElementById('perception-value').innerText = perceptionSkill;
-            document.getElementById('courage-value').innerText = courageSkill;
-            document.getElementById('strategic-thinking-value').innerText = strategicThinkingSkill;
+            document.getElementById('JAVA').innerText = navigationSkill;
+            document.getElementById('AWS Certified').innerText = problemSolvingSkill;
+            document.getElementById('Operational Excellence').innerText = adventureSkill;
+            document.getElementById('JavaScript').innerText = perceptionSkill;
+            document.getElementById('Python').innerText = courageSkill;
+            document.getElementById('System Design').innerText = strategicThinkingSkill;
         }
 
         function movePlayer(direction) {
