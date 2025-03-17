@@ -448,6 +448,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -462,6 +470,7 @@
             text-align: center;
             padding: 50px;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
         #game-container {
             width: 600px;
@@ -471,6 +480,7 @@
             position: relative;
             overflow: hidden;
             border: 3px solid white;
+            display: none;
         }
         .player {
             width: 30px;
@@ -497,28 +507,60 @@
             font-weight: bold;
             border-radius: 50%;
         }
+        #start-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #game-over {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Code Quest: Skill Unlocker</h1>
-    <p>Use arrow keys to move and collect skills!</p>
+    <button id="start-button">Play Game</button>
     <div id="game-container">
         <div class="player" id="player"></div>
     </div>
     <p id="skill-message"></p>
+    <p id="game-over">Game Over! You have unlocked all skills: <span id="final-skills"></span></p>
     
     <script>
         const player = document.getElementById("player");
         const gameContainer = document.getElementById("game-container");
         const skillMessage = document.getElementById("skill-message");
+        const gameOverMessage = document.getElementById("game-over");
+        const finalSkills = document.getElementById("final-skills");
+        const startButton = document.getElementById("start-button");
         
         let playerX = 10;
         let playerY = 360;
         const moveSpeed = 10;
+        let gameStarted = false;
         const skills = ["Java", "Python", "Agile", "CI/CD", "PostgreSQL", "Angular"];
         let collectedSkills = [];
         
+        function startGame() {
+            gameStarted = true;
+            gameContainer.style.display = "block";
+            startButton.style.display = "none";
+            spawnPlatforms();
+            spawnSkills();
+            document.addEventListener("keydown", movePlayer);
+        }
+        
         function movePlayer(event) {
+            if (!gameStarted) return;
+            event.preventDefault(); // Prevent page scrolling
+            
             if (event.key === "ArrowRight" && playerX < 570) playerX += moveSpeed;
             if (event.key === "ArrowLeft" && playerX > 0) playerX -= moveSpeed;
             if (event.key === "ArrowUp" && playerY > 0) playerY -= moveSpeed;
@@ -566,16 +608,20 @@
                     skillDiv.remove();
                     
                     if (collectedSkills.length === skills.length) {
-                        skillMessage.textContent = "Congratulations! You've unlocked all my skills!";
+                        gameOver();
                     }
                 }
             });
         }
         
-        document.addEventListener("keydown", movePlayer);
-        spawnPlatforms();
-        spawnSkills();
+        function gameOver() {
+            gameStarted = false;
+            document.removeEventListener("keydown", movePlayer);
+            gameOverMessage.style.display = "block";
+            finalSkills.textContent = collectedSkills.join(", ");
+        }
+        
+        startButton.addEventListener("click", startGame);
     </script>
 </body>
 </html>
-
