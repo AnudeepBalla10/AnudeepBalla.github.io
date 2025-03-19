@@ -7,6 +7,49 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
+                body.dark {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1920/1080');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .dynamic-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .changing-word {
+            color: #ffcc00;
+            display: inline-block;
+            min-width: 120px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -164,10 +207,38 @@
 <body>
     <button class="dark-mode-toggle" id="dark-mode-toggle">Dark Mode</button>
 
+    <button class="dark-mode-toggle" id="dark-mode-toggle">Dark Mode</button>
+
     <div class="hero">
-        <h1>Welcome to my portfolio!</h1>
+        <img src="https://via.placeholder.com/150" alt="Anudeep Balla">
+        <h1>Hello, this is <strong>Anudeep Balla</strong></h1>
+        <h2 class="dynamic-text">I am a <span class="changing-word">Developer</span> Developer</h2>
         <button class="button is-primary" id="about-button">Learn More</button>
     </div>
+
+    <script>
+        const roles = ["Web", "Backend", "Cloud", "Python", "AWS", "API", "Full-Stack"];
+        let index = 0;
+        const changingWord = document.querySelector(".changing-word");
+
+        function changeWord() {
+            changingWord.style.opacity = "0"; 
+            changingWord.style.transform = "translateY(-10px)"; 
+
+            setTimeout(() => {
+                changingWord.textContent = roles[index];
+                changingWord.style.opacity = "1";
+                changingWord.style.transform = "translateY(0)";
+                index = (index + 1) % roles.length;
+            }, 500);
+        }
+
+        setInterval(changeWord, 2000);
+
+        document.getElementById("dark-mode-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+        });
+    </script>
     <div class="graph" id="graph"></div>
     <div class="section" id="about-section">
         <div class="content">
@@ -443,185 +514,184 @@
             document.getElementById('contact-section').classList.add('active');
         });
     </script>
-</body>
-</html>
 
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quest: FPS Skill Shooter</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #1e1e1e;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        #game-container {
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            background: url('https://source.unsplash.com/1600x900/?cyberpunk') center/cover;
-        }
-        .target {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            background-color: red;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-        }
-        .bullet {
-            width: 10px;
-            height: 10px;
-            background-color: yellow;
-            position: absolute;
-            border-radius: 50%;
-        }
-        #crosshair {
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            border: 2px solid white;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        #game-over {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            font-weight: bold;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            display: none;
-        }
-        #start-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Code Quest: FPS Skill Shooter</h1>
-    <button id="start-button">Start Game</button>
-    <div id="game-container">
-        <div id="crosshair"></div>
+<div id="game-container">
+    <div id="ui-container">
+        <button id="startGame">▶ Start Game</button>
+        <button id="endGame" style="display: none;">🛑 End Game</button>
     </div>
-    <div id="game-over">Game Over! You've Unlocked All Skills: <span id="final-skills"></span></div>
-    
-    <script>
-        const gameContainer = document.getElementById("game-container");
-        const startButton = document.getElementById("start-button");
-        const crosshair = document.getElementById("crosshair");
-        const gameOverMessage = document.getElementById("game-over");
-        const finalSkills = document.getElementById("final-skills");
-        let gameStarted = false;
-        let collectedSkills = [];
-        
-        const skills = ["Java", "Python", "Agile", "CI/CD", "PostgreSQL", "Angular"];
-        
-        function startGame() {
-            gameStarted = true;
-            startButton.style.display = "none";
-            spawnTargets();
-        }
-        
-        function spawnTargets() {
-            skills.forEach(skill => {
-                let target = document.createElement("div");
-                target.classList.add("target");
-                target.textContent = "?";
-                target.dataset.skill = skill;
-                target.style.left = Math.random() * (window.innerWidth - 50) + "px";
-                target.style.top = Math.random() * (window.innerHeight - 50) + "px";
-                gameContainer.appendChild(target);
-            });
-        }
-        
-        document.addEventListener("mousemove", (event) => {
-            crosshair.style.left = `${event.clientX - 15}px`;
-            crosshair.style.top = `${event.clientY - 15}px`;
+    <div id="message"></div>
+    <canvas id="gameCanvas"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<style>
+    #game-container {
+        position: relative;
+        width: 100%;
+        height: 500px; /* Adjust the height if needed */
+        background: black;
+    }
+    #ui-container {
+        position: absolute; top: 20px; left: 20px;
+        display: flex; flex-direction: column; gap: 10px;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: #ff9900;
+        color: white;
+    }
+    #message {
+        position: absolute; top: 20px; left: 50%;
+        transform: translateX(-50%);
+        color: white; font-size: 24px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px; border-radius: 10px;
+        display: none;
+    }
+</style>
+
+<script>
+    let scene, camera, renderer, controls, player, mixer, action;
+    let moveSpeed = 0.15;
+    let keys = {};
+    let clock = new THREE.Clock();
+    let gameRunning = false;
+    let treasures = [];
+    let foundTreasures = 0;
+
+    function init() {
+        const container = document.getElementById("game-container");
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(10, 20, 10);
+        light.castShadow = true;
+        scene.add(light);
+
+        // Terrain
+        const ground = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.MeshStandardMaterial({ color: 0x567d46 }));
+        ground.rotation.x = -Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // Lake
+        const lake = new THREE.Mesh(new THREE.CircleGeometry(5, 32), new THREE.MeshStandardMaterial({ color: 0x1e90ff, transparent: true, opacity: 0.8 }));
+        lake.position.set(10, 0.01, 10);
+        lake.rotation.x = -Math.PI / 2;
+        scene.add(lake);
+
+        // Load Player
+        const loader = new THREE.GLTFLoader();
+        loader.load("https://threejs.org/examples/models/gltf/Soldier.glb", function(gltf) {
+            player = gltf.scene;
+            player.scale.set(1.5, 1.5, 1.5);
+            player.position.set(0, 0, 0);
+            scene.add(player);
+            mixer = new THREE.AnimationMixer(player);
+            action = mixer.clipAction(gltf.animations[0]);
         });
-        
-        document.addEventListener("click", (event) => {
-            if (!gameStarted) return;
-            shootBullet(event.clientX, event.clientY);
+
+        // Generate Trees
+        function createTree(x, z, size) {
+            const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.3 * size, 0.3 * size, 2 * size, 8), new THREE.MeshStandardMaterial({ color: 0x8B4513 }));
+            trunk.position.set(x, 1 * size, z);
+            trunk.castShadow = true;
+
+            const leaves = new THREE.Mesh(new THREE.SphereGeometry(1.5 * size, 16, 16), new THREE.MeshStandardMaterial({ color: 0x008000 }));
+            leaves.position.set(x, 3 * size, z);
+            leaves.castShadow = true;
+
+            scene.add(trunk, leaves);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            createTree(Math.random() * 40 - 20, Math.random() * 40 - 20, Math.random() * 1.5 + 0.5);
+        }
+
+        // Treasures
+        const treasureTypes = [
+            { type: "Gold", color: 0xffd700 },
+            { type: "Silver", color: 0xc0c0c0 },
+            { type: "Diamond", color: 0x00ffff },
+            { type: "Fake (Prank)", color: 0xff0000 }
+        ];
+
+        for (let i = 0; i < treasureTypes.length; i++) {
+            const chest = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: treasureTypes[i].color }));
+            chest.position.set(Math.random() * 40 - 20, 0.5, Math.random() * 40 - 20);
+            scene.add(chest);
+            treasures.push({ mesh: chest, type: treasureTypes[i].type });
+        }
+
+        // Controls
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.set(0, 7, 15);
+        controls.update();
+
+        document.addEventListener("keydown", (e) => (keys[e.key] = true));
+        document.addEventListener("keyup", (e) => (keys[e.key] = false));
+
+        animate();
+    }
+
+    function movePlayer() {
+        if (!gameRunning || !player) return;
+        if (keys["ArrowUp"] || keys["w"]) player.position.z -= moveSpeed;
+        if (keys["ArrowDown"] || keys["s"]) player.position.z += moveSpeed;
+        if (keys["ArrowLeft"] || keys["a"]) player.position.x -= moveSpeed;
+        if (keys["ArrowRight"] || keys["d"]) player.position.x += moveSpeed;
+
+        // Camera follows player
+        camera.position.x = player.position.x;
+        camera.position.z = player.position.z + 10;
+        controls.target.set(player.position.x, player.position.y, player.position.z);
+        controls.update();
+    }
+
+    function checkTreasureCollision() {
+        treasures.forEach((treasure, index) => {
+            if (player.position.distanceTo(treasure.mesh.position) < 1.5) {
+                document.getElementById("message").innerHTML = `🎉 You found ${treasure.type}! 🎉`;
+                document.getElementById("message").style.display = "block";
+                scene.remove(treasure.mesh);
+                treasures.splice(index, 1);
+                if (treasures.length === 0) setTimeout(() => location.reload(), 3000);
+            }
         });
-        
-        function shootBullet(x, y) {
-            let bullet = document.createElement("div");
-            bullet.classList.add("bullet");
-            bullet.style.left = `${x}px`;
-            bullet.style.top = `${y}px`;
-            gameContainer.appendChild(bullet);
-            
-            setTimeout(() => {
-                bullet.remove();
-                checkHit(x, y);
-            }, 50);
-        }
-        
-        function checkHit(x, y) {
-            document.querySelectorAll(".target").forEach(target => {
-                let rect = target.getBoundingClientRect();
-                if (
-                    x > rect.left &&
-                    x < rect.right &&
-                    y > rect.top &&
-                    y < rect.bottom
-                ) {
-                    collectedSkills.push(target.dataset.skill);
-                    target.textContent = target.dataset.skill;
-                    target.style.backgroundColor = "green";
-                    setTimeout(() => target.remove(), 500);
-                    
-                    if (collectedSkills.length === skills.length) {
-                        gameOver();
-                    }
-                }
-            });
-        }
-        
-        function gameOver() {
-            gameStarted = false;
-            gameOverMessage.style.display = "block";
-            finalSkills.textContent = collectedSkills.join(", ");
-        }
-        
-        startButton.addEventListener("click", startGame);
-    </script>
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        movePlayer();
+        checkTreasureCollision();
+        renderer.render(scene, camera);
+    }
+
+    document.getElementById("startGame").addEventListener("click", () => (gameRunning = true));
+    document.getElementById("endGame").addEventListener("click", () => location.reload());
+
+    init();
+</script>
+
 </body>
 </html>
+
+
+
+
